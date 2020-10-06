@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	s "strings"
 
 	"github.com/harry1453/go-common-file-dialog/cfd"
 )
@@ -46,5 +47,16 @@ func Mv(oldName string, newName string) {
 	err := os.Rename(oldName, newName)
 	if err != nil {
 		log.Fatal(err)
+	}
+}
+
+func MvExt(origFile string, oldExt string, newExt string) {
+	// check if file meets suffix text
+	if s.HasSuffix(origFile, oldExt) {
+		// replace original filename with replaced extenstion filename
+		err := os.Rename(origFile, s.Replace(origFile, oldExt, newExt, -1))
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 }
