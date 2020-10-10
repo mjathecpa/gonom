@@ -4,10 +4,13 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"regexp"
 	s "strings"
 
 	"github.com/harry1453/go-common-file-dialog/cfd"
 )
+
+const yyyymmRegx := 
 
 func GetFiles() []string {
 	var files []string
@@ -59,4 +62,9 @@ func MvExt(origFile string, oldExt string, newExt string) {
 			log.Fatal(err)
 		}
 	}
+}
+
+func MvRxp(origFile string, oldVal string, newVal string){
+	re := regexp.MustCompile( "([2]\d\d\d)(\-)([0-1]\d)\s" )
+	newName := re.ReplaceAllString(oldVal, newVal)
 }

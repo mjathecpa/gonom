@@ -9,6 +9,8 @@ import (
 func main() {
 
 	var userOpt string
+	var findVal string
+	var replVal string
 
 	fmt.Println(userOpt)
 
@@ -20,22 +22,33 @@ func main() {
 
 		if userOpt == "1" {
 			// get find/replace values
-			var findExt string
-			var replExt string
 			fmt.Println("Enter extension to find:")
-			fmt.Scan(&findExt)
+			fmt.Scan(&findVal)
 			fmt.Println("Enter extension to replace:")
-			fmt.Scan(&replExt)
-			replExt = s.ToLower(replExt)
+			fmt.Scan(&replVal)
+			// set extension to lowercase
+			replVal = s.ToLower(replVal)
 
-			// get file name array
+			// query user for file name array
 			files := f.GetFiles()
 
 			// cycle and replace
 			for _, file := range files {
-				f.MvExt(file, findExt, replExt)
+				f.MvExt(file, findVal, replVal)
 			}
+		} else if userOpt == "2" {
+			// get find/replace values
+			fmt.Println("Enter date prefix to find:")
+			fmt.Scan(&findVal)
+			fmt.Println("Enter date prefix to replace:")
+			fmt.Scan(&replVal)
 
+			// query user for file name array
+			files := f.GetFiles()
+
+			// cycle and replace
+			for _, file := range files {
+				f.MvExt(file, findVal, replVal)
 		} else {
 			fmt.Println("No valid option selected")
 		}
