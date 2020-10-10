@@ -18,6 +18,7 @@ func main() {
 		fmt.Println("Select a program option:")
 		fmt.Println("---------------------")
 		fmt.Println("1 - Change file extensions")
+		fmt.Println("2 - Change date reference (yyyy-mm)")
 		fmt.Scan(&userOpt)
 
 		if userOpt == "1" {
@@ -38,8 +39,6 @@ func main() {
 			}
 		} else if userOpt == "2" {
 			// get find/replace values
-			fmt.Println("Enter date prefix to find:")
-			fmt.Scan(&findVal)
 			fmt.Println("Enter date prefix to replace:")
 			fmt.Scan(&replVal)
 
@@ -48,7 +47,8 @@ func main() {
 
 			// cycle and replace
 			for _, file := range files {
-				f.MvExt(file, findVal, replVal)
+				f.MvYyyyMmRxp(file, replVal)
+			}
 		} else {
 			fmt.Println("No valid option selected")
 		}
