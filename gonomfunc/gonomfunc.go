@@ -64,7 +64,7 @@ func MvExt(origFile string, oldExt string, newExt string) {
 
 func MvYyyyMmRxp(origFile string, newVal string) {
 	// compile search parameter
-	reParam, err := regexp.Compile("^([2]\\d\\d\\d)(\\-)([0-1]\\d)")
+	reParam, err := regexp.Compile(`^([2]\\d\\d\\d)(\\-)([0-1]\\d)`)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -74,11 +74,10 @@ func MvYyyyMmRxp(origFile string, newVal string) {
 	if found {
 		newName := reParam.ReplaceAllString(origFile, newVal)
 		newName += " "
+		// replace original filename with replaced extenstion filename
 		errr := os.Rename(origFile, newName)
 		if errr != nil {
 			log.Fatal(errr)
 		}
 	}
-	// replace original filename with replaced extenstion filename
-
 }
