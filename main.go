@@ -23,6 +23,7 @@ func main() {
 
 		if userOpt == "1" {
 			// get find/replace values
+			fmt.Println("\n")
 			fmt.Println("Enter extension to find:")
 			fmt.Scan(&findVal)
 			fmt.Println("Enter extension to replace:")
@@ -39,6 +40,7 @@ func main() {
 			}
 		} else if userOpt == "2" {
 			// get find/replace values
+			fmt.Println("\n")
 			fmt.Println("Enter date prefix to replace:")
 			fmt.Scan(&replVal)
 
@@ -52,6 +54,7 @@ func main() {
 		} else {
 			fmt.Println("No valid option selected")
 		}
+		fmt.Println("\n")
 		fmt.Println("Process another (y/n)")
 		fmt.Scan(&userOpt)
 		if s.ToLower(userOpt) == "n" {

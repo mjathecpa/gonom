@@ -1,6 +1,7 @@
 package gonomfunc
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"path/filepath"
@@ -54,10 +55,13 @@ func Mv(oldName string, newName string) {
 func MvExt(origFile string, oldExt string, newExt string) {
 	// check if file meets suffix text
 	if s.HasSuffix(origFile, oldExt) {
+		fmt.Println("Found: ", origFile)
 		// replace original filename with replaced extenstion filename
 		err := os.Rename(origFile, s.Replace(origFile, oldExt, newExt, -1))
 		if err != nil {
 			log.Fatal(err)
+		} else {
+			fmt.Println("    Changed: ", s.Replace(origFile, oldExt, newExt, -1))
 		}
 	}
 }
